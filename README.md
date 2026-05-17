@@ -64,8 +64,8 @@ flowchart LR
 Use the PHP binary installed by WinGet:
 
 ```powershell
-Set-Location "C:\Users\chaus\dev\repos\entitlement-request-portal-api"
-$env:Path = "C:\Users\chaus\AppData\Local\Microsoft\WinGet\Packages\PHP.PHP.8.3_Microsoft.Winget.Source_8wekyb3d8bbwe;$env:Path"
+cd entitlement-request-portal-api
+# Ensure `php` is installed and available on PATH.
 php -S 127.0.0.1:4485 router.php
 ```
 
@@ -77,7 +77,7 @@ Then open:
 ## Validate
 
 ```powershell
-$env:Path = "C:\Users\chaus\AppData\Local\Microsoft\WinGet\Packages\PHP.PHP.8.3_Microsoft.Winget.Source_8wekyb3d8bbwe;$env:Path"
+# Ensure `php` is installed and available on PATH.
 php tests/run_tests.php
 py -3.11 -m pip install -r requirements-dev.txt
 python scripts/render_readme_assets.py
