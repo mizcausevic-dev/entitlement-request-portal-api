@@ -5,11 +5,12 @@ import subprocess
 import sys
 import time
 import urllib.request
+import os
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PHP = Path(r"C:\Users\chaus\AppData\Local\Microsoft\WinGet\Packages\PHP.PHP.8.3_Microsoft.Winget.Source_8wekyb3d8bbwe\php.exe")
+PHP = os.environ.get("PHP_BIN", "php")
 PORT = 4485
 
 
@@ -31,7 +32,7 @@ def post_json(path: str, payload: dict):
 
 def main() -> None:
     process = subprocess.Popen(
-        [str(PHP), "-S", f"127.0.0.1:{PORT}", "router.php"],
+        [PHP, "-S", f"127.0.0.1:{PORT}", "router.php"],
         cwd=ROOT,
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
@@ -63,4 +64,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
